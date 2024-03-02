@@ -1,12 +1,0 @@
-
-g	java:S112/"FDefine and throw a dedicated exception instead of using a generic one.(ΙΉ΅σωÿÿÿÿ8Λσ®ρί1
-g	java:S112G"FDefine and throw a dedicated exception instead of using a generic one.(ΙΉ΅σωÿÿÿÿ8Λσ®ρί1
-ƒ
-java:S1488#"aImmediately return this expression instead of assigning it to the temporary variable "imageData".(Νγλφωÿÿÿÿ8Μσ®ρί1
-]	java:S125"<This block of commented-out lines of code should be removed.(¶–ά…ϊÿÿÿÿ8γσ®ρί1
-]	java:S1254"<This block of commented-out lines of code should be removed.(¶–ά…ϊÿÿÿÿ8ησ®ρί1
-G	java:S106D"+Replace this use of System.out by a logger.(ΑχΊ¦8ισ®ρί1
-l
-java:S1128"ORemove this unused import 'org.springframework.beans.factory.annotation.Value'.(μψ›8ισ®ρί1
-M
-java:S1128"+Remove this unused import 'java.util.List'.(Υλ±Δψÿÿÿÿ8κσ®ρί1

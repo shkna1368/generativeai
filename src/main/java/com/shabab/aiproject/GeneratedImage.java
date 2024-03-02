@@ -2,7 +2,6 @@ package com.shabab.aiproject;
 
 
 import java.util.List;
-
 public class GeneratedImage {
     private List<ImageUrl> data;
 
