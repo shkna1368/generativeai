@@ -1,0 +1,18 @@
+
+_
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8»¹áÉŞ1
+W	java:S125 "<This block of commented-out lines of code should be removed.(¡“¨
+8÷´ÍÉŞ1
+X	java:S1258"<This block of commented-out lines of code should be removed.(¢±ôÅ8•¸ãÉŞ1
+E	java:S106D"+Replace this use of System.out by a logger.(É¯|8ÃÓäÉŞ1
+X	java:S125F"<This block of commented-out lines of code should be removed.(º¯ûò8‰µÍÉŞ1
+]	java:S125N"<This block of commented-out lines of code should be removed.(ÙÃŸäúÿÿÿÿ8‰µÍÉŞ1
+X	java:S125U"<This block of commented-out lines of code should be removed.(Ï„Ä»8‰µÍÉŞ1
+]	java:S125b"<This block of commented-out lines of code should be removed.(‘á““ÿÿÿÿÿ8‰µÍÉŞ1
+]	java:S125l"<This block of commented-out lines of code should be removed.(‹‚Üøÿÿÿÿ8ŠµÍÉŞ1
+]	java:S125p"<This block of commented-out lines of code should be removed.(Øßâşÿÿÿÿ8ŠµÍÉŞ1
+X	java:S125}"<This block of commented-out lines of code should be removed.(¶ûŠã8ŠµÍÉŞ1
+r
+java:S1128"PRemove this unused import 'org.springframework.ai.openai.OpenAiEmbeddingClient'.(³‚ãùÿÿÿÿ8—¸ãÉŞ1
+j
+java:S1128	"HRemove this unused import 'org.springframework.ai.openai.api.OpenAiApi'.(«†«ğşÿÿÿÿ8—¸ãÉŞ1

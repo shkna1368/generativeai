@@ -1,0 +1,31 @@
+
+m
+java:S1192-"KDefine a constant instead of duplicating this literal "TextToText" 3 times.(Ü„£’ùÿÿÿÿ8«€ øß1
+m
+java:S1192-"KDefine a constant instead of duplicating this literal "TextToCode" 3 times.(Ü„£’ùÿÿÿÿ8«€ øß1
+n
+java:S1192-"LDefine a constant instead of duplicating this literal "TextToImage" 3 times.(Ü„£’ùÿÿÿÿ8Ê øß1
+P
+java:S1948".Make "modelService" transient or serializable.(Éúñ£ÿÿÿÿÿ8¹€ øß1
+G
+java:S1948*"+Make "textToTextllms" private or transient.(ø–“|8¹€ øß1
+H
+java:S1948+",Make "textToImagellms" private or transient.(¢•ßU8¹€ øß1
+M
+java:S1948,"+Make "textToCodellms" private or transient.(â±©…üÿÿÿÿ8¹€ øß1
+G
+java:S1948-"%Make "llmsType" private or transient.(Ü„£’ùÿÿÿÿ8¹€ øß1
+X	java:S125Š"<This block of commented-out lines of code should be removed.(­¡ƒN8Ã€ øß1
+c
+java:S1128"ARemove this unused import 'com.vaadin.flow.component.ClickEvent'.(¬†•Îûÿÿÿÿ8Ã€ øß1
+c
+java:S1128"FRemove this unused import 'com.vaadin.flow.component.icon.VaadinIcon'.(ë‰¡8Ä€ øß1
+r
+java:S1128"PRemove this unused import 'com.vaadin.flow.component.notification.Notification'.(•İ± ùÿÿÿÿ8Ä€ øß1
+f
+java:S1128"JRemove this unused import 'com.vaadin.flow.component.textfield.TextField'.(ÂòÉ
+8Ä€ øß1
+u
+java:S1128"SRemove this unused import 'org.springframework.beans.factory.annotation.Autowired'.(¡¸Îùÿÿÿÿ8Ä€ øß1
+R
+java:S1068"0Remove this unused "modelService" private field.(Éúñ£ÿÿÿÿÿ8Ä€ øß1
