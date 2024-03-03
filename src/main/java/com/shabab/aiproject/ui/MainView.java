@@ -2,6 +2,7 @@ package com.shabab.aiproject.ui;
 
 
 import com.shabab.aiproject.huggingface.ModelService;
+import com.shabab.aiproject.huggingface.ModelType;
 import com.shabab.aiproject.huggingface.TextModelResponse;
 import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.Unit;
@@ -28,7 +29,7 @@ public class MainView extends VerticalLayout {
 
   private final   ModelService modelService;
 
-String selectedLlmType;
+ModelType selectedModelType=ModelType.TEXT;
 
 
 
@@ -39,9 +40,9 @@ String selectedLlmType;
     TextArea textAreaResult;
     TextArea textAreaPrompt;
     Image image;
-List<String > textToTextllms=List.of("Mistral-7B-Instruct-v0.2");
-List<String > textToImagellms=List.of("stable-diffusion-v1-5");
-List<String > textToCodellms=List.of("Mistral-7B-Instruct-v0.2");
+List<String > textToTextllms=List.of("Mistral-7B-Instruct-v0.2","Bloom","flan-t5-large","gemma-7b");
+List<String > textToImagellms=List.of("stable-diffusion-v1-5","playground-v2.5-1024px-aesthetic");
+List<String > textToCodellms=List.of("Mistral-7B-Instruct-v0.2","starcoder2-15b");
 List<String > llmsType=List.of("TextToText","TextToImage","TextToCode");
 
     public MainView(ModelService modelService) {
@@ -54,8 +55,8 @@ List<String > llmsType=List.of("TextToText","TextToImage","TextToCode");
 
         addNewBtn.addClickListener(buttonClickEvent -> {
 
-            if (selectedLlmType.equals("TextToText")||selectedLlmType.equals("TextToCode")) {
-                TextModelResponse[] textModelResponses=      modelService.sendInferenceWithTextModel(textAreaPrompt.getValue(),"https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.2");
+            if (selectedModelType.equals(ModelType.TEXT)||selectedModelType.equals(ModelType.CODE)) {
+                TextModelResponse[] textModelResponses=      modelService.sendInferenceWithTextModel(selectedModelType,textAreaPrompt.getValue(),comboBox.getValue());
                 textAreaResult.setValue("");
                 for (TextModelResponse textModelResponse : textModelResponses) {
                     textAreaResult.setValue(textAreaResult.getValue() + textModelResponse.getGenerated_text());
@@ -63,8 +64,8 @@ List<String > llmsType=List.of("TextToText","TextToImage","TextToCode");
 
             }
 
-  if (selectedLlmType.equals("TextToImage")) {
-          byte[] bytes=      modelService.sendInferenceWithModel(textAreaPrompt.getValue());
+  if (selectedModelType.equals(ModelType.IMAGE)) {
+          byte[] bytes=      modelService.sendInferenceWithModel(textAreaPrompt.getValue(),comboBox.getValue());
 
 
       StreamResource resource = new StreamResource("", () -> new ByteArrayInputStream(bytes));
@@ -81,21 +82,26 @@ List<String > llmsType=List.of("TextToText","TextToImage","TextToCode");
         comboBoxLlmType.setAllowCustomValue(true);
         comboBoxLlmType.setWidth(200, Unit.PIXELS);
         comboBoxLlmType.setItems(llmsType);
+        comboBoxLlmType.setValue(llmsType.iterator().next());
+
 
         comboBoxLlmType.addValueChangeListener(event -> {
 
-                    selectedLlmType = event.getValue();
+                 String   selectedLlmType = event.getValue();
 
                     if (selectedLlmType.equals("TextToText")) {
-
+                      selectedModelType=ModelType.TEXT;
                         comboBox.setItems(textToTextllms);
+                        comboBox.setValue(textToTextllms.iterator().next());
 
                     } else if (selectedLlmType.equals("TextToImage")) {
+                        selectedModelType=ModelType.IMAGE;
                         comboBox.setItems(textToImagellms);
-
+ comboBox.setValue(textToImagellms.iterator().next());
                     } else if (selectedLlmType.equals("TextToCode")) {
-
+                        selectedModelType=ModelType.CODE;
                         comboBox.setItems(textToCodellms);
+                        comboBox.setValue(textToCodellms.iterator().next());
 
                     }
 
@@ -109,8 +115,8 @@ List<String > llmsType=List.of("TextToText","TextToImage","TextToCode");
         comboBox = new ComboBox<>();
         comboBox.setAllowCustomValue(true);
         comboBox.setWidth(400, Unit.PIXELS);
-
-
+        comboBox.setItems(textToTextllms);
+        comboBox.setValue(textToTextllms.iterator().next());
 
 
 

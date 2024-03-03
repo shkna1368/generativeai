@@ -23,7 +23,7 @@ public class ModelController {
     @PostMapping("/generateImage")
     public ResponseEntity<byte[]> postInference(@RequestBody InferenceRequest inferenceRequest) {
         try {
-            byte[] image = modelService.sendInferenceWithModel( inferenceRequest.getInputs());
+            byte[] image = modelService.sendInferenceWithModel( inferenceRequest.getInputs(),"stable-diffusion-v1-5");
             return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(image);
         } catch (RuntimeException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Image generation failed, Try again");
@@ -39,7 +39,7 @@ public class ModelController {
      @PostMapping("/generateText")
     public ResponseEntity<TextModelResponse[]> postInferenceText(@RequestBody InferenceRequest inferenceRequest) {
         try {
-          var data = modelService.sendInferenceWithTextModel( inferenceRequest.getInputs(),inferenceRequest.getModelInferenceUrl());
+          var data = modelService.sendInferenceWithTextModel(inferenceRequest.getModelType() ,inferenceRequest.getInputs(),"Mistral-7B-Instruct-v0.2");
             return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).body(data);
         } catch (RuntimeException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "text generation failed, Try again");

@@ -9,13 +9,26 @@ import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ModelService {
 
     private final WebClient.Builder webClientBuilder;
 
+Map<String,String> textToTextllms=Map.of("Mistral-7B-Instruct-v0.2","https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.2",
+        "Bloom","https://api-inference.huggingface.co/models/bigscience/bloom",
 
+        "flan-t5-large","https://api-inference.huggingface.co/models/google/flan-t5-large",
+
+        "gemma-7b","https://api-inference.huggingface.co/models/google/gemma-7b");
+Map<String,String> textToCodellms=Map.of("Mistral-7B-Instruct-v0.2","https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.2",
+        "starcoder2-15b","https://api-inference.huggingface.co/models/bigcode/starcoder2-15b");
+
+
+Map<String,String> textToImagellms=Map.of("stable-diffusion-v1-5","https://api-inference.huggingface.co/models/runwayml/stable-diffusion-v1-5",
+"playground-v2.5-1024px-aesthetic","https://api-inference.huggingface.co/models/playgroundai/playground-v2.5-1024px-aesthetic"
+     );
 
 
 
@@ -26,7 +39,7 @@ public class ModelService {
     }
 
 
-    public byte[] sendInferenceWithModel( String input) {
+    public byte[] sendInferenceWithModel( String input,String modelInferencekey) {
       /*  Optional<Model> modelByIdOpt = modelRepository.findById(modelId);
         Model model = modelByIdOpt.orElseThrow(() -> new RuntimeException("Model not found"));*/
 
@@ -34,7 +47,7 @@ public class ModelService {
         try {
             byte[] imageData = webClientBuilder.build()
                     .post()
-                    .uri("https://api-inference.huggingface.co/models/runwayml/stable-diffusion-v1-5")
+                    .uri(textToImagellms.get(modelInferencekey))
                     .contentType(MediaType.APPLICATION_JSON)
                     .accept(MediaType.IMAGE_JPEG)
                     .header(HttpHeaders.AUTHORIZATION, "Bearer " + "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")
@@ -48,9 +61,17 @@ public class ModelService {
         }
     }
 
-    public TextModelResponse[] sendInferenceWithTextModel( String input,String modelInferenceUrl) {
+    public TextModelResponse[] sendInferenceWithTextModel( ModelType modelType,String input,String modelInferencekey) {
       /*  Optional<Model> modelByIdOpt = modelRepository.findById(modelId);
         Model model = modelByIdOpt.orElseThrow(() -> new RuntimeException("Model not found"));*/
+      String   modelInferenceUrl=null;
+        if(modelType.equals(ModelType.TEXT)) {
+            modelInferenceUrl=textToTextllms.get(modelInferencekey);
+        }
+        else if(modelType.equals(ModelType.CODE)) {
+            modelInferenceUrl=textToCodellms.get(modelInferencekey);
+
+        }
 
         InferenceRequestToHuggingFace inferenceRequestToHuggingFace = new InferenceRequestToHuggingFace(input);
         try {
