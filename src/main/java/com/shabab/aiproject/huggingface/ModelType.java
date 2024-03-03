@@ -5,5 +5,6 @@ public enum ModelType {
     TEXT,
     IMAGE,
     CODE,
-    VIDEO;
+    VIDEO,
+    SPEECH;
 }
