@@ -1,9 +1,0 @@
-
-_
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8ÃÑº–à1
-c
-java:S1128"ARemove this unused import 'org.springframework.http.HttpHeaders'.(ãŸñ×úÿÿÿÿ8ŒŞâ–à1
-v
-java:S1128"TRemove this unused import 'org.springframework.web.reactive.function.BodyInserters'.(×¸™øÿÿÿÿ8ŒŞâ–à1
-y
-java:S1128"WRemove this unused import 'org.springframework.web.reactive.function.client.WebClient'.(¬à•ıÿÿÿÿ8ŒŞâ–à1
