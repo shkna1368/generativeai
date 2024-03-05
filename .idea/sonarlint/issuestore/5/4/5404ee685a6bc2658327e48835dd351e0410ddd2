@@ -1,15 +1,0 @@
-
-g	java:S112U"FDefine and throw a dedicated exception instead of using a generic one.(É¹¡óùÿÿÿÿ8õØÔîà1
->
-java:S1643a"Use a StringBuilder instead.(úúÙîıÿÿÿÿ8öØÔîà1
-M
-java:S1172)"0Remove this unused method parameter "modelType".(ÇÏ©ß8ÂÙÔîà1
-]	java:S125;"<This block of commented-out lines of code should be removed.(¶–Ü…úÿÿÿÿ8ÂÙÔîà1
-`
-java:S1854]">Remove this useless assignment to local variable "flightList".(…ıóÅúÿÿÿÿ8ÅÙÔîà1
-Q
-java:S1481]"/Remove this unused "flightList" local variable.(…ıóÅúÿÿÿÿ8ÆÙÔîà1
-G	java:S106e"+Replace this use of System.out by a logger.(¼¬¸Å8ÇÙÔîà1
-X	java:S125f"<This block of commented-out lines of code should be removed.(å­‘8ÇÙÔîà1
-m
-java:S1764w"KCorrect one of the identical sub-expressions on both sides of operator "||"(ÂØëÖıÿÿÿÿ8Ëçèîà1
