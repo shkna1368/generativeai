@@ -1,0 +1,18 @@
+
+f
+java:S1192"IDefine a constant instead of duplicating this literal "passport" 3 times.(¯‹Â¼8ß¡öîà1
+s
+java:S1104"VMake flightList a static final constant or non-public and provide accessors if needed.(ÔçûÌ8ß¡öîà1
+M
+java:S1444"0Make this "public static flightList" field final(ÔçûÌ8à¡öîà1
+:
+java:S2386"Make this member "protected".(ÔçûÌ8ì¡öîà1
+;
+java:S2119"Save and re-use this "Random".(¦‘—ê8ò¡öîà1
+I
+java:S1905!"'Remove this unnecessary cast to "long".(è£ûšûÿÿÿÿ8ó¡öîà1
+h
+java:S1128"FRemove this unused import 'org.checkerframework.checker.units.qual.A'.(¿‚áñøÿÿÿÿ8ù¡öîà1
+L
+java:S1128
+"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ8ù¡öîà1

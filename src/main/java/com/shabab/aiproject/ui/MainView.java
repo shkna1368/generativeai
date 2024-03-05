@@ -61,6 +61,7 @@ List<String > llmsType=List.of("TextToText","TextToImage","TextToCode","TextToSp
         this.addNewBtn = new Button("Generate");
 
         addNewBtn.addClickListener(buttonClickEvent -> {
+            textAreaResult.setValue("");
 
                     if (selectedModelType.equals(ModelType.TEXT) || selectedModelType.equals(ModelType.CODE)) {
                         TextModelResponse[] textModelResponses = modelService.sendInferenceWithTextModel(selectedModelType, textAreaPrompt.getValue(), comboBox.getValue());

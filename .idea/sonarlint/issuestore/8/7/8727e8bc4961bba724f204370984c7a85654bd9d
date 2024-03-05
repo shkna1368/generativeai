@@ -1,0 +1,34 @@
+
+K
+java:S1948"".Make "modelService" transient or serializable.(ÍŒŒØ8î¼íà1
+]	java:S125A"<This block of commented-out lines of code should be removed.(õ«á¿ùÿÿÿÿ8ó¼íà1
+X	java:S125T"<This block of commented-out lines of code should be removed.(¡§Â¢8÷¼íà1
+W	java:S125]"<This block of commented-out lines of code should be removed.(­¡ƒN8ø¼íà1
+l
+java:S1128"JRemove this unused import 'com.shabab.aiproject.huggingface.ModelService'.(‡ØĞûÿÿÿÿ8ù¼íà1
+k
+java:S1128"ORemove this unused import 'com.shabab.aiproject.huggingface.TextModelResponse'.(¢¢ÚR8ù¼íà1
+j
+java:S1128"HRemove this unused import 'com.vaadin.flow.component.combobox.ComboBox'.(«ù•‰ùÿÿÿÿ8ù¼íà1
+c
+java:S1128"ARemove this unused import 'com.vaadin.flow.component.html.Image'.(ª°Û³ùÿÿÿÿ8ù¼íà1
+w
+java:S1128"URemove this unused import 'com.vaadin.flow.component.orderedlayout.HorizontalLayout'.(ô†¹Éıÿÿÿÿ8ù¼íà1
+d
+java:S1128"GRemove this unused import 'com.vaadin.flow.data.value.ValueChangeMode'.(èÀÍ²8ù¼íà1
+_
+java:S1128"BRemove this unused import 'com.vaadin.flow.server.StreamResource'.(Ê»8ù¼íà1
+B
+java:S1128"%Remove this unused import 'java.awt'.(ï´µ©8ù¼íà1
+[
+java:S1128"9Remove this unused import 'java.io.ByteArrayInputStream'.(Ëôæ±ûÿÿÿÿ8ù¼íà1
+R
+java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ8ù¼íà1
+M
+java:S1128"0Remove this unused import 'java.nio.file.Files'.(‚ƒü8ù¼íà1
+L
+java:S1128"/Remove this unused import 'java.nio.file.Path'.(×²êÂ8ù¼íà1
+M
+java:S1128"0Remove this unused import 'java.nio.file.Paths'.(áè°¯8ù¼íà1
+M
+java:S1068""0Remove this unused "modelService" private field.(ÍŒŒØ8ú¼íà1

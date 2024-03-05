@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChatHistory">
+    <chats>
+      <list>
+        <chat>
+          <accountId value="VXNlcjozMTA2MDQ=" />
+          <internalId value="3a93bbfd-83a5-474b-8c98-5fbd33da8795" />
+        </chat>
+        <chat>
+          <accountId value="VXNlcjozMTA2MDQ=" />
+          <internalId value="ad58a592-232b-47fb-b212-75678abff3b6" />
+          <messages>
+            <list>
+              <message>
+                <speaker value="HUMAN" />
+                <text value="spring ai hugging face sample" />
+              </message>
+              <message>
+                <speaker value="ASSISTANT" />
+                <text value=" Here is a sample Spring code snippet using Hugging Face transformers for NLP:&#10;&#10;```java&#10;@SpringBootApplication&#10;public class NlpApplication {&#10;&#10;  public static void main(String[] args) {&#10;    SpringApplication.run(NlpApplication.class, args);&#10;  }&#10;&#10;  @Bean&#10;  public Pipeline pipeline() {&#10;    return new Pipeline()&#10;      .setTokenizer(new Tokenizer(&quot;bert-base-cased&quot;))&#10;      .setModel(new BertForSequenceClassification.Model(&quot;bert-base-cased&quot;))&#10;      .setFeatureExtractor(new BertFeatureExtractor(&quot;bert-base-cased&quot;)); &#10;  }&#10;  &#10;  @RestController&#10;  public class NlpController {&#10;  &#10;    @Autowired&#10;    private Pipeline pipeline;&#10;    &#10;    @PostMapping(&quot;/nlp&quot;)&#10;    public String analyze(@RequestBody String text) {&#10;      List&lt;NamedEntity&gt; entities = pipeline.process(text).getEntities();&#10;      // analyze entities&#10;      return &quot;Processed text&quot;;&#10;    }&#10;&#10;  }&#10;&#10;}&#10;```&#10;&#10;This creates a Hugging Face pipeline using a BERT model for NLP. The `Pipeline` bean is autowired into the controller and can process text through the `/nlp` endpoint. The pipeline extracts named entities which can then be analyzed further.&#10;&#10;Let me know if you need any clarification or have additional requirements!" />
+              </message>
+            </list>
+          </messages>
+          <updatedAt value="2024-03-04T14:17:03.5482572" />
+        </chat>
+        <chat>
+          <accountId value="VXNlcjozMTA2MDQ=" />
+          <internalId value="bc9e5367-3741-4733-8dfe-56c157ee2c86" />
+        </chat>
+      </list>
+    </chats>
+  </component>
+</project>
