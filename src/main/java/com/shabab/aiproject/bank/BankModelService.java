@@ -23,22 +23,23 @@ public class BankModelService {
 
     private final WebClient.Builder webClientBuilder;
     private final BankService bankService;
-    Map<String,String> textToTextllms=Map.of("Mistral-7B-Instruct-v0.2","https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.2",
-            "Bloom","https://api-inference.huggingface.co/models/bigscience/bloom",
+    Map<String, String> textToTextllms = Map.of("Mistral-7B-Instruct-v0.2", "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.2",
+            "Bloom", "https://api-inference.huggingface.co/models/bigscience/bloom",
 
-            "flan-t5-large","https://api-inference.huggingface.co/models/google/flan-t5-large",
+            "flan-t5-large", "https://api-inference.huggingface.co/models/google/flan-t5-large",
 
-            "gemma-7b","https://api-inference.huggingface.co/models/google/gemma-7b");
+            "gemma-7b", "https://api-inference.huggingface.co/models/google/gemma-7b");
+
     public BankModelService(WebClient.Builder webClientBuilder, BankService bankService) {
         this.webClientBuilder = webClientBuilder;
         this.bankService = bankService;
     }
 
 
-    public Map<String,List> sendInferenceWithTextModel(ModelType modelType, String input, String modelInferencekey,TransActionCallBack transActionCallBack) {
+    public Map<String, List> sendInferenceWithTextModel(ModelType modelType, String input, String modelInferencekey, TransActionCallBack transActionCallBack) {
 
 
-        var prompt= "You are bank assistant."+input+ """
+        var prompt = "You are bank assistant." + input + """
                 .In your response, I only want you to include  with the following JSON and put not assign value with null:
                 {
                 "action":action,
@@ -61,8 +62,7 @@ public class BankModelService {
       /*  Optional<Model> modelByIdOpt = modelRepository.findById(modelId);
         Model model = modelByIdOpt.orElseThrow(() -> new RuntimeException("Model not found"));*/
 
-        var  modelInferenceUrl=textToTextllms.get(modelInferencekey);
-
+        var modelInferenceUrl = textToTextllms.get(modelInferencekey);
 
 
         InferenceRequestToHuggingFace inferenceRequestToHuggingFace = new InferenceRequestToHuggingFace(prompt);
@@ -79,8 +79,7 @@ public class BankModelService {
                     .block();
 
 
-           return process(data,transActionCallBack);
-
+            return process(data, transActionCallBack);
 
 
         } catch (Exception e) {
@@ -91,12 +90,13 @@ public class BankModelService {
     }
 
 
+    public List<BankAccount> getAllBanAccount() {
+        return bankService.getAllBanAccount();
+    }
 
-    public List<BankAccount> getAllBanAccount() {        return bankService.getAllBanAccount();}
 
-
-    public Map<String,List> process(TextModelResponse[] textModelResponses,TransActionCallBack transActionCallBack) {
-Map<String,List> map=new HashMap<>();
+    public Map<String, List> process(TextModelResponse[] textModelResponses, TransActionCallBack transActionCallBack) {
+        Map<String, List> map = new HashMap<>();
 
 
         String result = "";
@@ -115,49 +115,65 @@ Map<String,List> map=new HashMap<>();
         String action = (String) jsonObject.get("action");
 
 
-      if (action.equalsIgnoreCase("open") || action.equalsIgnoreCase("openAccount") || action.equalsIgnoreCase("openaccount")) {
+        if (action.equalsIgnoreCase("open") || action.equalsIgnoreCase("openAccount") || action.equalsIgnoreCase("openaccount")) {
 
-     map.put("bankAccounts",bankService.save(jsonObject))   ;
-        }
-       else     if (action.equalsIgnoreCase("transfer") ) {
+            map.put("bankAccounts", bankService.save(jsonObject));
+        } else if (action.equalsIgnoreCase("transfer")) {
 
-     map.put("bankAccounts",bankService.transfer(jsonObject))   ;
-        }
-
-      else   if (action.equalsIgnoreCase("search")||action.equalsIgnoreCase("find")||action.equalsIgnoreCase("searchAccount")
-                ||action.equalsIgnoreCase("findAccount")||action.equalsIgnoreCase("RetrieveAccountInformation")||
-                action.equalsIgnoreCase("RetrieveAccountInformation")||
-                action.equalsIgnoreCase("retrieve")||
-                action.equalsIgnoreCase("retrieved")||
-                action.equalsIgnoreCase("viewBalance")||
-                action.equalsIgnoreCase("view_balance")||
-                action.equalsIgnoreCase("getBalance")||
-                action.equalsIgnoreCase("get_balance")||
+            map.put("bankAccounts", bankService.transfer(jsonObject));
+        } else if (action.equalsIgnoreCase("search") || action.equalsIgnoreCase("find") || action.equalsIgnoreCase("searchAccount")
+                || action.equalsIgnoreCase("findAccount") || action.equalsIgnoreCase("RetrieveAccountInformation") ||
+                action.equalsIgnoreCase("RetrieveAccountInformation") ||
+                action.equalsIgnoreCase("retrieve") ||
+                action.equalsIgnoreCase("retrieved") ||
+                action.equalsIgnoreCase("viewBalance") ||
+                action.equalsIgnoreCase("view_balance") ||
+                action.equalsIgnoreCase("getBalance") ||
+                action.equalsIgnoreCase("get_balance") ||
                 action.equalsIgnoreCase("displayBalance")) {
 
-         map.put("bankAccounts", bankService.search(jsonObject))       ;
-        }
+            map.put("bankAccounts", bankService.search(jsonObject));
+        } else if (action.equals("close") || action.equalsIgnoreCase("delete") || action.equals("closeAccount")) {
 
-       else if (action.equals("close")||action.equalsIgnoreCase("delete")||action.equals("closeAccount")) {
+            map.put("bankAccounts", bankService.delete(jsonObject));
+        } else if (action.equals("getTransactions") || action.equalsIgnoreCase("transaction") || action.equals("getTranaction")) {
 
-         map.put("bankAccounts", bankService.delete(jsonObject))       ;
-        }
-         else if (action.equals("getTransactions")||action.equalsIgnoreCase("transaction")||action.equals("getTranaction")) {
-
-             transActionCallBack.getTransactions(bankService.getTransaction(jsonObject));
-        // map.put("transaction", bankService.getTransaction(jsonObject))       ;
+            transActionCallBack.getTransactions(bankService.getTransaction(jsonObject));
+            // map.put("transaction", bankService.getTransaction(jsonObject))       ;
         }
 
 
-
-
-
-
-return map;
+        return map;
     }
 
 
+    public Map<String,List> sendAudi(ModelType modelType,byte[] audio, String modelInferencekey, TransActionCallBack transActionCallBack) {
 
+
+        try {
+
+           AudioProcessResponse data = webClientBuilder.build()
+                    .post()
+                    .uri("https://api-inference.huggingface.co/models/openai/whisper-large-v3")
+                    .contentType(MediaType.MULTIPART_FORM_DATA)
+                    .accept(MediaType.APPLICATION_JSON)
+                    .header(HttpHeaders.AUTHORIZATION, "Bearer " + "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")
+                    .body(BodyInserters.fromValue(audio))
+                    .retrieve()
+                    .bodyToMono(AudioProcessResponse.class)
+                    .block();
+
+
+         return    sendInferenceWithTextModel(ModelType.TEXT, data.getText(), modelInferencekey, transActionCallBack);
+        }
+        catch (Exception e){
+
+            System.out.println(e);
+        }
+
+
+
+        return null;
+
+    }
 }
-
-
